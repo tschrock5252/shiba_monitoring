@@ -28,6 +28,6 @@ I am running this every minute right now to pull data at a very steady basis.
 An example cron is set up in this repository for you to view.
 
 ### Script
-This project's heart is currently built into a script that lives within the repository at ./shiba_monitoring/scripts/crypto/shiba/check_shiba_price.sh
+This project's heart is currently built into a script that lives within the repository at [./shiba_monitoring/scripts/crypto/shiba/check_shiba_price.sh](https://github.com/tschrock5252/shiba_monitoring/blob/master/scripts/crypto/shiba/check_shiba_price.sh)
 
 You will need to set this up in order for this project to be a success. The script will create the required directories for the everything to run properly. 
