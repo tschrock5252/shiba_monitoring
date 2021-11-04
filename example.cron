@@ -1,2 +1,2 @@
 # Monitor SHIBA's price
-* * * * * /scripts/crypto/shiba/check_shiba_price.sh >> /var/log/tyler/check_shiba_price.log
+* * * * * /scripts/crypto/shiba/check_shiba_price.sh >> /var/log/crypto/check_shiba_price.log
