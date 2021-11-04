@@ -107,7 +107,7 @@
                 EMAIL_COUNT_2=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_2}");
                 EMAIL_COUNT_3=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_3}");
                 EMAIL_COUNT_4=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_4}");
-            # Here we are defining the values that we are our thresholds for alerting on.
+            # Here we are defining the values that are our thresholds for alerting on.
                 SHIB_LOWER1=0.00008000;
                 SHIB_LOWER2=0.00010000;
                 SHIB_LOWER3=0.00100000;
