@@ -103,12 +103,12 @@
                 LOOP_START=$(($LOOP_START+1));
                 SHIB_VALUE=$(cat "${SHIB_WGET_FILE}" | awk -F 'chakra-text' "{ print \$${LOOP_START} }" | awk -F '>' '{ print $2 }' | awk -F '<' '{ print $1 }' | xargs);
                 CHECK="USD";
-                EMAIL_COUNT_1=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_1}");
-                EMAIL_COUNT_2=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_2}");
-                EMAIL_COUNT_3=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_3}");
-                EMAIL_COUNT_4=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_4}");
+                EMAIL_COUNT_1=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_1}" | awk 'print $1');
+                EMAIL_COUNT_2=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_2}" | awk 'print $1');
+                EMAIL_COUNT_3=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_3}" | awk 'print $1');
+                EMAIL_COUNT_4=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_4}" | awk 'print $1');
             # Here we are defining the values that are our thresholds for alerting on.
-            # I only have 4 set in total and they are statically assigned to these values at this time. 
+            # I only have 4 set in total and they are statically assigned to these values at this time.
             # This is something anyone else can change and expand upon / do better.
                 SHIB_LOWER1=0.00008000;
                 SHIB_LOWER2=0.00010000;
@@ -123,11 +123,11 @@
                         echo "Shib value is: ${SHIB_VALUE}" >> "${SHIB_EMAIL_FILE}";
                     # Test if an email needs to be sent.
                         grep "We have not yet begun to take off..." "${SHIB_EMAIL_FILE}";
-                        if [ $? -eq 0 ] || [ $EMAIL_COUNT_1 -lt 5 ]; then
+                        if [ $? -eq 0 ] && [ $EMAIL_COUNT_1 -gt 5 ]; then
                             :;
                         else
-                            sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";
-                            echo "Email sent" >> "${SHIB_EMAIL_COUNTER_FILE_1}";
+                            sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";    # All conditions succeeded. Sending an email.
+                            echo "Email sent" >> "${SHIB_EMAIL_COUNTER_FILE_1}";    # Incrementing the counter.
                         fi
                     elif (( $(echo "${SHIB_VALUE} > ${SHIB_LOWER1}" |bc -l) )) || (( $(echo "${SHIB_VALUE} < ${SHIB_LOWER2}" |bc -l) )); then
                         echo "Subject: SHIB Alert Email!" > "${SHIB_EMAIL_FILE}";
@@ -135,11 +135,11 @@
                         echo "Shib value is: ${SHIB_VALUE}" >> "${SHIB_EMAIL_FILE}";
                     # Test if an email needs to be sent.
                         grep "We have started to gain some speed" "${SHIB_EMAIL_FILE}";
-                        if [ $? -eq 0 ] || [ $EMAIL_COUNT_2 -lt 5 ]; then
+                        if [ $? -eq 0 ] && [ $EMAIL_COUNT_2 -lt 5 ]; then
                             :;
                         else
-                            sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";
-                            echo "Email sent" >> "${SHIB_EMAIL_COUNTER_FILE_2}";
+                            sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";    # All conditions succeeded. Sending an email.
+                            echo "Email sent" >> "${SHIB_EMAIL_COUNTER_FILE_2}";    # Incrementing the counter.
                         fi
                     elif (( $(echo "${SHIB_VALUE} > ${SHIB_LOWER2}" |bc -l) )) || (( $(echo "${SHIB_VALUE} < ${SHIB_LOWER3}" |bc -l) )); then
                         echo "Subject: SHIB Alert Email!" > "${SHIB_EMAIL_FILE}";
@@ -147,11 +147,11 @@
                         echo "Shib value is: ${SHIB_VALUE}" >> "${SHIB_EMAIL_FILE}";
                     # Test if an email needs to be sent.
                         grep "We are starting to take off" "${SHIB_EMAIL_FILE}";
-                        if [ $? -eq 0 ] || [ $EMAIL_COUNT_3 -lt 5 ]; then
+                        if [ $? -eq 0 ] && [ $EMAIL_COUNT_3 -lt 5 ]; then
                             :;
                         else
-                            sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";
-                            echo "Email sent" >> "${SHIB_EMAIL_COUNTER_FILE_3}";
+                            sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";    # All conditions succeeded. Sending an email.
+                            echo "Email sent" >> "${SHIB_EMAIL_COUNTER_FILE_3}";    # Incrementing the counter.
                         fi
                     elif (( $(echo "${SHIB_VALUE} > ${SHIB_LOWER3}" |bc -l) )) || (( $(echo "${SHIB_VALUE} < ${SHIB_LOWER4}" |bc -l) )); then
                         echo "Subject: SHIB Alert Email!" > "${SHIB_EMAIL_FILE}";
@@ -159,11 +159,11 @@
                         echo "Shib value is: ${SHIB_VALUE}" >> "${SHIB_EMAIL_FILE}";
                     # Test if an email needs to be sent.
                         grep "We are seeing amazing flight" "${SHIB_EMAIL_FILE}";
-                        if [ $? -eq 0 ] || [ $EMAIL_COUNT_4 -lt 5 ]; then
+                        if [ $? -eq 0 ] && [ $EMAIL_COUNT_4 -lt 5 ]; then
                             :;
                         else
-                            sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";
-                            echo "Email sent" >> "${SHIB_EMAIL_COUNTER_FILE_4}";
+                            sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";    # All conditions succeeded. Sending an email.
+                            echo "Email sent" >> "${SHIB_EMAIL_COUNTER_FILE_4}";    # Incrementing the counter.
                         fi
                     elif (( $(echo "${SHIB_VALUE} > ${SHIB_LOWER4}" |bc -l) )); then
                         echo "Subject: SHIB Alert Email!" > "${SHIB_EMAIL_FILE}";
@@ -174,7 +174,7 @@
                         if [ $? -eq 0 ]; then
                             :;
                         else
-                            sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";
+                            sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";    # All conditions succeeded. Sending an email.
                         fi
                     else
                         :;
