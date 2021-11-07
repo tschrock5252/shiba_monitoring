@@ -34,6 +34,21 @@ You will need to set this up in order for this project to be a success. The scri
 ### SSMTP
 Your infrastructure needs to have SSMTP set up on it. This is a requirement for the [check_shiba_price.sh](https://github.com/tschrock5252/shiba_monitoring/blob/master/scripts/crypto/shiba/check_shiba_price.sh) script to work.
 
-You will also need to set up appropriate configuration for SSMTP. 
+Ubuntu Installation:
+```
+# Install SSMTP
+sudo apt install ssmtp
+```
+RHEL/Centos Install:
+```
+# Remove postfix in case it is there
+yum remove postfix
+
+# Install SSMTP
+yum install ssmtp --enablerepo=epel
+```
+
+You will also need to set up appropriate configuration for SSMTP.
+Ubuntu/RHEL/CentOS Location: /etc/ssmtp/ssmtp.conf
 
 An example of that is set up in this repository at the following location for you to reference: [./shiba_monitoring/etc/ssmtp/ssmtp.conf](https://github.com/tschrock5252/shiba_monitoring/blob/master/etc/ssmtp/ssmtp.conf)
