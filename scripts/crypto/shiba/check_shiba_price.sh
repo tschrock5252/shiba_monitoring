@@ -18,7 +18,7 @@
         SHIB_EMAIL_COUNTER_FILE_4="${SHIB_TRACKING_DIR}/shib_email_counter4.${TODAYS_DATE}.txt";
         touch "${SHIB_EMAIL_COUNTER_FILE_1}" && touch "${SHIB_EMAIL_COUNTER_FILE_2}" && touch "${SHIB_EMAIL_COUNTER_FILE_3}" && touch "${SHIB_EMAIL_COUNTER_FILE_4}";
         COIN_URL="https://crypto.com/price/shiba-inu";
-        EMAIL_TO="tschrock52@gmail.com";
+        EMAIL_TO="some_email_address@somewhere.com";
     }
 
 # Set up a lock to prevent this script from running on top of itself if executed via cron
