@@ -49,6 +49,7 @@ yum install ssmtp --enablerepo=epel
 ```
 
 You will also need to set up appropriate configuration for SSMTP.
+
 **Ubuntu/RHEL/CentOS Location**: /etc/ssmtp/ssmtp.conf
 
 An example of that is set up in this repository at the following location for you to reference: [./shiba_monitoring/etc/ssmtp/ssmtp.conf](https://github.com/tschrock5252/shiba_monitoring/blob/master/etc/ssmtp/ssmtp.conf)
