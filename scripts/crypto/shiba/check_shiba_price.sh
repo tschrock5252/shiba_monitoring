@@ -135,7 +135,7 @@
                         echo "Shib value is: ${SHIB_VALUE}" >> "${SHIB_EMAIL_FILE}";
                     # Test if an email needs to be sent.
                         grep "We have started to gain some speed" "${SHIB_EMAIL_FILE}";
-                        if [ $? -eq 0 ] && [ $EMAIL_COUNT_2 -lt 5 ]; then
+                        if [ $? -eq 0 ] && [ $EMAIL_COUNT_2 -gt 5 ]; then
                             :;
                         else
                             sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";    # All conditions succeeded. Sending an email.
@@ -147,7 +147,7 @@
                         echo "Shib value is: ${SHIB_VALUE}" >> "${SHIB_EMAIL_FILE}";
                     # Test if an email needs to be sent.
                         grep "We are starting to take off" "${SHIB_EMAIL_FILE}";
-                        if [ $? -eq 0 ] && [ $EMAIL_COUNT_3 -lt 5 ]; then
+                        if [ $? -eq 0 ] && [ $EMAIL_COUNT_3 -gt 5 ]; then
                             :;
                         else
                             sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";    # All conditions succeeded. Sending an email.
@@ -159,7 +159,7 @@
                         echo "Shib value is: ${SHIB_VALUE}" >> "${SHIB_EMAIL_FILE}";
                     # Test if an email needs to be sent.
                         grep "We are seeing amazing flight" "${SHIB_EMAIL_FILE}";
-                        if [ $? -eq 0 ] && [ $EMAIL_COUNT_4 -lt 5 ]; then
+                        if [ $? -eq 0 ] && [ $EMAIL_COUNT_4 -gt 5 ]; then
                             :;
                         else
                             sendmail "${EMAIL_TO}" < "${SHIB_EMAIL_FILE}";    # All conditions succeeded. Sending an email.
