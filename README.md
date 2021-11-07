@@ -53,3 +53,13 @@ You will also need to set up appropriate configuration for SSMTP.
 **Ubuntu/RHEL/CentOS Location**: /etc/ssmtp/ssmtp.conf
 
 An example of that is set up in this repository at the following location for you to reference: [./shiba_monitoring/etc/ssmtp/ssmtp.conf](https://github.com/tschrock5252/shiba_monitoring/blob/master/etc/ssmtp/ssmtp.conf)
+
+#### SSMTP Configuration Notes
+
+The email account that you are tying this to via config is not who you are _sending_ this to. 
+
+The account you are tying this to via config is a relay account. The flow of data looks like this for mail.
+
+**Local Server ---> GMail Relay Account ---> Target Email User Inbox**
+
+It's important to keep this in mind in case mail relay starts failing.
