@@ -39,7 +39,7 @@ Your infrastructure needs to have SSMTP set up on it. This is a requirement for 
 # Install SSMTP
 sudo apt install ssmtp
 ```
-**RHEL/Centos Install**:
+**RHEL/CentOS Install**:
 ```
 # Remove postfix in case it is there
 yum remove postfix
