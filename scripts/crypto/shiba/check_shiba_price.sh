@@ -18,7 +18,7 @@
         SHIB_EMAIL_COUNTER_FILE_4="${SHIB_TRACKING_DIR}/shib_email_counter4.${TODAYS_DATE}.txt";
         touch "${SHIB_EMAIL_COUNTER_FILE_1}" && touch "${SHIB_EMAIL_COUNTER_FILE_2}" && touch "${SHIB_EMAIL_COUNTER_FILE_3}" && touch "${SHIB_EMAIL_COUNTER_FILE_4}";
         COIN_URL="https://crypto.com/price/shiba-inu";
-        EMAIL_TO="some_email_address@somewhere.com";
+        EMAIL_TO="some_email_address@somewhere.com";    # Configure this appropriately. This is where alerts will be sent to when prices surge.
     }
 
 # Set up a lock to prevent this script from running on top of itself if executed via cron
@@ -108,6 +108,8 @@
                 EMAIL_COUNT_3=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_3}");
                 EMAIL_COUNT_4=$(wc -l "${SHIB_EMAIL_COUNTER_FILE_4}");
             # Here we are defining the values that are our thresholds for alerting on.
+            # I only have 4 set in total and they are statically assigned to these values at this time. 
+            # This is something anyone else can change and expand upon / do better.
                 SHIB_LOWER1=0.00008000;
                 SHIB_LOWER2=0.00010000;
                 SHIB_LOWER3=0.00100000;
