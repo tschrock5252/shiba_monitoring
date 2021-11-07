@@ -19,13 +19,8 @@ You will have to dedicate a VM or some form of infrastructure to this. I am sure
 
 I am running this at present on an Ubuntu 20.04.3 VM and am having no issues with the configuration. YMMV on other operating systems.
 
-### SSMTP
-Your infrastructure needs to have SSMTP set up on it. This is a requirement for this script to work.
-
-You will also need to set up configuration for it. An example of that is set up in this repository at the following location: [./shiba_monitoring/etc/ssmtp/ssmtp.conf](https://github.com/tschrock5252/shiba_monitoring/blob/master/etc/ssmtp/ssmtp.conf)
-
 ### Cron Daemon
-You will need to configure a cron job to execute this script on a consistent basis.
+You will need to configure a cron job to execute the [check_shiba_price.sh](https://github.com/tschrock5252/shiba_monitoring/blob/master/scripts/crypto/shiba/check_shiba_price.sh) script on a consistent basis.
 
 I am running this every minute right now to pull data at a very steady basis.
 
@@ -35,3 +30,10 @@ An example cron is set up in this repository for you to view at the following lo
 This project's heart is currently built into a script that lives within the repository at [./shiba_monitoring/scripts/crypto/shiba/check_shiba_price.sh](https://github.com/tschrock5252/shiba_monitoring/blob/master/scripts/crypto/shiba/check_shiba_price.sh)
 
 You will need to set this up in order for this project to be a success. The script will create the required directories for everything to run successfully.
+
+### SSMTP
+Your infrastructure needs to have SSMTP set up on it. This is a requirement for the [check_shiba_price.sh](https://github.com/tschrock5252/shiba_monitoring/blob/master/scripts/crypto/shiba/check_shiba_price.sh) script to work.
+
+You will also need to set up appropriate configuration for SSMTP. 
+
+An example of that is set up in this repository at the following location for you to reference: [./shiba_monitoring/etc/ssmtp/ssmtp.conf](https://github.com/tschrock5252/shiba_monitoring/blob/master/etc/ssmtp/ssmtp.conf)
