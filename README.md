@@ -31,6 +31,30 @@ This project's heart is currently built into a script that lives within the repo
 
 You will need to set this up in order for this project to be a success. The script will create the required directories for everything to run successfully.
 
+#### Configurable Variables
+The script has a large number of variables that you can configure and change if you want to.
+
+I try to use variables heavily in all shell scripts I write. It makes configuration much easier for folks later.
+
+To make this functional you at least have to change one that is in the script: **EMAIL_TO**
+
+This variable configures where your alerts are going to be sent to when the price(s) of SHIB start to rise.
+
+I also recommend you take a look at the following: 
+
+```
+SHIB_LOWER1=0.00008000;
+SHIB_LOWER2=0.00010000;
+SHIB_LOWER3=0.00100000;
+SHIB_LOWER4=0.01000000;
+```
+
+These are the values to configure with regards to where you will start receiving alerts for this coin.
+
+I only set the script up to monitor a total of four values via loop(s) at this time. More can be set up, but this is still a work in progress.
+
+I will wait to see if I want something that alerts more.
+
 ### SSMTP
 Your infrastructure needs to have SSMTP set up on it. This is a requirement for the [check_shiba_price.sh](https://github.com/tschrock5252/shiba_monitoring/blob/master/scripts/crypto/shiba/check_shiba_price.sh) script to work.
 
